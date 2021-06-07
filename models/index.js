@@ -11,7 +11,7 @@ const db = mongoose.connection;
 
 // Set up event for database to print connection
 db.once('open', () => {
-    console.log(`Connecy to MongoDB at ${db.host}:${db.port}`);
+    console.log(`Connect to MongoDB at ${db.host}:${db.port}`);
 });
 
 db.on('error', (error) => {
