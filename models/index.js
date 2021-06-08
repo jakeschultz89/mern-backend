@@ -4,12 +4,13 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: true
+    useFindAndModify: true,
+    useCreateIndex: true
 });
 
 const db = mongoose.connection;
 
-// Set up event for database to print connection
+// Set up event for db to print connection
 db.once('open', () => {
     console.log(`Connect to MongoDB at ${db.host}:${db.port}`);
 });
@@ -19,9 +20,11 @@ db.on('error', (error) => {
 });
 
 // Import all of your models
-const User = require('./User')
+const User = require('./User');
+const Book = require('./Book');
 
-// Export all of your models from this finalhandler
+// export all the models from this file
 module.exports = {
-    User
+    User,
+    Book,
 }
